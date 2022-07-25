@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let Tien=+prompt("Nhập số Tiền:");
+        let Lai=+prompt("Nhập số phần trăm lãi :");
+        let Nam=+prompt("Nhập số năm:");
+        let T1;
+        let T2;
+        let Tn;
+        if(Tien>0 && Lai>0&&Nam>0){
+          T1=Tien*Lai;
+          T2=Tien+(2*T1);
+          Tn=Tien+(Nam*T1);
+        }console.log(T1);
+        console.log(T2);
+        console.log(Tn);
+       
+        
+    </script>
+</body>
+</html>
