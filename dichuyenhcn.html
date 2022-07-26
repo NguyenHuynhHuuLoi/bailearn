@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Di chuyển hình chữ nhật</title>
+</head>
+
+<body>
+    <canvas id="game" width="800" height="600" style="border: 3px solid #000000"></canvas>
+    <script>
+        let gameContext = document.getElementById("game").getContext("2d");
+        gameContext.beginPath();
+        gameContext.fillStyle = '#fa4b2a';
+        gameContext.fillRect(20, 20, 150, 100);
+        function drawCar() {
+            gameContext.beginPath();
+            gameContext.fillStyle = '#fa4b2a';
+            gameContext.fillRect(20, carYPosition, 150, 100);
+        }
+        setInterval(moveCarDown, 100); // 10ms
+        function moveCarUp() {
+            gameContext.clearRect(20, carYPosition, 150, 100);
+
+            if (carYPosition > 0) {
+                carYPosition--;
+            }
+
+            drawCar();
+        }
+
+        function moveCarDown() {
+            gameContext.clearRect(20, carYPosition, 150, 100);
+
+            if (carYPosition + 100 < 600) {
+                carYPosition++;
+            }
+
+            drawCar();
+        }
+        let yDistance = 1;
+        function moveCar() {
+            gameContext.clearRect(carXPosition, carYPosition, carWidth, carHeight);
+
+            let isTouchTop = carYPosition < gameTopPosition;
+            let isTouchBottom = carYPosition + carHeight > gameBottomPosition;
+            if (isTouchTop || isTouchBottom) {
+                yDistance = -yDistance;
+            }
+
+            carYPosition += yDistance;
+            drawCar();
+        }
+        setInterval(moveCar, timeLoop);
+    </script>
+</body>
+
+</html>
